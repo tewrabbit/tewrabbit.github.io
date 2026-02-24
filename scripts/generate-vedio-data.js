@@ -23,7 +23,6 @@ function readVideoListFromDir(dirPath, urlBase) {
 hexo.extend.filter.register('before_generate', () => {
   const dataDir = path.join(hexo.source_dir, '_data');
   const outputVedioPath = path.join(dataDir, 'vedio.json');
-  const outputVideoPath = path.join(dataDir, 'video.json');
 
   ensureDir(dataDir);
 
@@ -37,6 +36,4 @@ hexo.extend.filter.register('before_generate', () => {
   const next = JSON.stringify(list, null, 2) + '\n';
   const prevVedio = fs.existsSync(outputVedioPath) ? fs.readFileSync(outputVedioPath, 'utf8') : '';
   if (prevVedio !== next) fs.writeFileSync(outputVedioPath, next);
-  const prevVideo = fs.existsSync(outputVideoPath) ? fs.readFileSync(outputVideoPath, 'utf8') : '';
-  if (prevVideo !== next) fs.writeFileSync(outputVideoPath, next);
 });
