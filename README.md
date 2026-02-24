@@ -1,4 +1,4 @@
-# Hexo + Matery 个人博客（可直接上线）
+# 个人博客
 
 ## 项目结构
 
@@ -75,8 +75,6 @@ keywords:
 - meta：`keywords/description`（来自站点与文章 Front-matter）
 - 结构化数据 JSON-LD（站点与文章，见 `themes/matery/layout/_partial/head.ejs`）
 
-上线前必须改：
-- `/_config.yml` 里的 `url` 改成你的线上域名（GitHub Pages 或自定义域名）
 
 ## 插件清单
 
@@ -101,49 +99,3 @@ keywords:
 - 评论系统：默认关闭（建议使用 Waline 或 Twikoo 这类独立服务端方案）
   - 位置：`themes/matery/_config.yml` 的 `waline` / `twikoo`
 
-## GitHub Pages 自动部署（推荐）
-
-本项目已内置 Actions：推送到 `main/master` 会自动构建并发布到 `gh-pages` 分支。
-
-你需要在 GitHub 仓库里做一次设置：
-- Settings → Pages
-- Source 选择：`Deploy from a branch`
-- Branch 选择：`gh-pages` / `root`
-
-之后每次 push 即自动更新站点。
-
-覆盖式上线（保留旧仓库，直接覆盖旧站点）见：`docs/deploy-github-pages.md`
-
-## 克制系二次元设计系统交付
-
-- CSS 变量文件：`themes/matery/source/css/anime-vars.css`
-- 样式覆盖（白底 + 分隔线 + 48px 按钮 + 线性图标）：`themes/matery/source/css/my.css`
-- 风格指南（Markdown）：`docs/style-guide.md`
-- 风格指南（PDF）：`docs/style-guide.pdf`
-- 组件三态动效（Lottie，≤20KB）：`source/lottie/loading.json` / `hover.json` / `done.json`
-- Figma 落地规范（结构与组件清单 + Tokens）：`design/figma-spec.md` / `design/tokens.json`
-
-### 重新生成风格指南 PDF（Windows）
-
-```powershell
-node tools/generate-style-guide-pdf.cjs
-```
-
-### 每日自动抓取 TOP1 二次元 Banner（可选）
-
-说明：使用 Danbooru 的 `order:score`（Safe）作为“最高赞榜单”，生成 `source/medias/banner/daily.webp`（16:9，≤200KB）。
-
-- 本地手动执行：
-
-```powershell
-node tools/fetch-daily-banner.mjs
-```
-
-- GitHub Actions 定时更新并提交：`.github/workflows/daily-banner.yml`
-
-## 首页大封面视频（随机/自动识别）
-
-说明：站点会自动识别 `source/medias/vedio/` 下的视频文件，并在页面打开时随机分配给封面/卡片视频背景；文章如果指定了 `coverVideo` 则固定不变。
-
-- 放置位置：`source/medias/vedio/`
-- 模板实现：`themes/matery/layout/_partial/index-cover.ejs`
