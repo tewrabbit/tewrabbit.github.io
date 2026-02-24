@@ -1,0 +1,89 @@
+<%
+var configRoot = config.root
+configRoot = (configRoot === null || configRoot === undefined || configRoot === '/') ? '' : configRoot;
+
+function renderLineIcon(icon) {
+  var map = {
+    'fas fa-home': '<svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5.5 9.5V21h13V9.5"></path></svg>',
+    'fas fa-tags': '<svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13 13 20 4 11V4h7z"></path><circle cx="8.5" cy="8.5" r="1.2"></circle></svg>',
+    'fas fa-bookmark': '<svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v18l-5-3-5 3z"></path></svg>',
+    'fas fa-archive': '<svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="5" rx="2"></rect><path d="M6 9v11h12V9"></path><path d="M10 13h4"></path></svg>',
+    'fas fa-user-circle': '<svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="10" r="3"></circle><path d="M7.5 19c1.6-2.2 3.2-3.3 4.5-3.3S14.9 16.8 16.5 19"></path></svg>',
+    'fas fa-address-book': '<svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h11a2 2 0 0 1 2 2v14H7z"></path><path d="M7 4a2 2 0 0 0-2 2v14h2"></path><circle cx="14" cy="11" r="2.2"></circle><path d="M11 17c1-1.6 2.1-2.4 3-2.4s2 .8 3 2.4"></path></svg>',
+    'fas fa-link': '<svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a4 4 0 0 1 0-6l1.5-1.5a4 4 0 0 1 6 0"></path><path d="M14 11a4 4 0 0 1 0 6L12.5 18.5a4 4 0 0 1-6 0"></path><path d="M9.5 12.5h5"></path></svg>',
+    'fas fa-chevron-right': '<svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7l5 5-5 5"></path></svg>'
+  };
+  return map[icon] || null;
+}
+%>
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        <% if (theme.logo !== undefined && theme.logo.length > 0) { %>
+        <img src="<%- theme.jsDelivr.url %><%- url_for(theme.logo) %>" class="logo-img circle responsive-img">
+        <% } %>
+        <div class="logo-name"><%= config.title %></div>
+        <div class="logo-desc">
+            <% if (config.description && config.description.length > 0) { %>
+            <%= config.description %>
+            <% } else { %>
+            Never really desperate, only the lost of the soul.
+            <% } %>
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        <% Object.keys(theme.menu).forEach(function(key) { %>
+        <li class="m-nav-item">
+	  <% if(!theme.menu[key].children) { %>
+		<a href="<%- url_for(theme.menu[key].url) %>" class="waves-effect waves-light">
+			<% if (theme.menu[key].icon && theme.menu[key].icon.length > 0) { %>
+			    <% var svg = renderLineIcon(theme.menu[key].icon); %>
+			    <% if (svg) { %><%- svg %><% } else { %><i class="fa-fw <%- theme.menu[key].icon %>"></i><% } %>
+			<% } else { %>
+				<%- renderLineIcon('fas fa-link') %>
+			<% } %>
+			<%- __(key) %>
+		</a>
+          <% } else { %>
+		<a href="javascript:;">
+			<% if (theme.menu[key].icon && theme.menu[key].icon.length > 0) { %>
+				<% var svg2 = renderLineIcon(theme.menu[key].icon); %>
+				<% if (svg2) { %><%- svg2 %><% } else { %><i class="fa-fw <%- theme.menu[key].icon %>"></i><% } %>
+			<% } else { %>
+				<%- renderLineIcon('fas fa-link') %>
+			<% } %>
+			<%- __(key) %>
+			<span class="m-icon"><%- renderLineIcon('fas fa-chevron-right') %></span>
+		</a>
+            <ul <%if(theme.navMenu&&theme.navMenu.bgColor){%> style="background: <%-theme.navMenu.bgColor%>;"<%}%> >
+              <% for(let childrenLink of theme.menu[key].children){ %>
+                <li>
+
+                  <a href="<%- url_for(childrenLink.url)%> " style="margin-left:<% if (theme.navMenu && theme.navMenu.mleft) {%>50px<%}else{%>75px<%}%>">
+				  <% if (childrenLink.icon && childrenLink.icon.length > 0) { %>
+				   <% var svg3 = renderLineIcon(childrenLink.icon); %>
+				   <% if (svg3) { %>
+				     <span style="position: absolute;left:<%if(theme.navMenu&&theme.navMenu.mleft){%>28px<%}else{%>50px<%}%>"><%- svg3 %></span>
+				   <% } else { %>
+				     <i class="fa <%- childrenLink.icon %>" style="position: absolute;left:<%if(theme.navMenu&&theme.navMenu.mleft){%>28px<%}else{%>50px<%}%>" ></i>
+				   <% } %>
+			      <% } %>
+		          <span><%- childrenLink.name %></span>
+                  </a>
+                </li>
+              <% } %>
+            </ul>
+          <% } %>
+        </li>
+        <% }); %>
+        <% if (theme.githubLink && theme.githubLink.enable) { %>
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="<%- theme.githubLink.url %>" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i><%- theme.githubLink.title %>
+            </a>
+        </li>
+        <% } %>
+    </ul>
+</div>
