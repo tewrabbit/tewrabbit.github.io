@@ -129,6 +129,14 @@ var coverPostsCount = coverPosts.length;
             el.setAttribute('data-video', homeVideos[idx]);
         }
 
+        function posterFromSrc(src) {
+            if (!src) return null;
+            if (src.indexOf('/medias/vedio/') === -1) return null;
+            return src
+                .replace('/medias/vedio/', '/medias/pictures/')
+                .replace(/\.(mp4|webm|mov|m4v)(\?.*)?$/i, '.png$2');
+        }
+
         ensureVideoUrl(coverSlider.find('.about-cover.has-video').get(0));
 
         //用户触摸轮播自动 restartPlay 是否生效
@@ -171,6 +179,10 @@ var coverPostsCount = coverPosts.length;
                 const $el = $(el);
                 const src = el.getAttribute('data-video') || $el.data('video');
                 const video = $el.find('video.carousel-video').get(0);
+                const poster = posterFromSrc(src);
+                if (video && poster) {
+                    video.setAttribute('poster', poster);
+                }
                 if (video && src && video.src !== src) {
                     video.src = src;
                     try {

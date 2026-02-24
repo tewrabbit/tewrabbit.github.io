@@ -198,6 +198,36 @@ $(function () {
     function pickNextVedio() {
         return pickNextVideo();
     }
+
+    function posterFromSrc(src) {
+        if (!src) return null;
+        try {
+            const u = new URL(src, window.location.href);
+            if (u.pathname.indexOf('/medias/vedio/') === -1) return null;
+            u.pathname = u.pathname
+                .replace('/medias/vedio/', '/medias/pictures/')
+                .replace(/\.(mp4|webm|mov|m4v)$/i, '.png');
+            u.search = '';
+            u.hash = '';
+            return u.toString();
+        } catch (e) {
+            if (src.indexOf('/medias/vedio/') === -1) return null;
+            return src
+                .replace('/medias/vedio/', '/medias/pictures/')
+                .replace(/\.(mp4|webm|mov|m4v)(\?.*)?$/i, '.png$2');
+        }
+    }
+
+    lazyVideos.forEach((video) => {
+        if (!(video instanceof HTMLVideoElement)) return;
+        let src = video.getAttribute('data-src');
+        if (!src && video.hasAttribute('data-random')) {
+            src = pickNextVideo();
+            if (src) video.setAttribute('data-src', src);
+        }
+        const poster = posterFromSrc(src);
+        if (poster) video.setAttribute('poster', poster);
+    });
     if (lazyVideos.length > 0 && 'IntersectionObserver' in window) {
         const maxConcurrent = 2;
         let loadingCount = 0;
@@ -230,6 +260,9 @@ $(function () {
                 done(video);
                 return;
             }
+
+            const poster = posterFromSrc(src);
+            if (poster) video.setAttribute('poster', poster);
 
             if (!video.src || video.src !== src) {
                 video.src = src;
