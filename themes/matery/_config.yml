@@ -147,7 +147,7 @@ recommend:
 
 # Configure website favicon and LOGO
 # 配置网站favicon和网站LOGO
-favicon: /images/favicon.svg
+favicon: /images/avatar.jpg
 logo: /images/avatar.jpg
 
 # The configuration of the second button in the home banner,
