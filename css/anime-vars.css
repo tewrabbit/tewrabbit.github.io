@@ -1,0 +1,22 @@
+:root {
+  --anime-primary: #7BA7E1;
+  --anime-secondary: #A8D8B9;
+  --anime-depth: 2px;
+  --anime-line: 1.5px;
+  --anime-radius: 12px;
+  --anime-bg: #FFFFFF;
+  --anime-divider: #F5F5F5;
+  --anime-border: #E0E0E0;
+  --anime-text: #111111;
+  --anime-muted: #6B7280;
+  --anime-focus: rgba(123, 167, 225, 0.2);
+  --anime-shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  --anime-grid: 8px;
+  --anime-font-title: "smiley-sans", "YouYuan", "幼圆", "Source Han Sans SC", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --anime-font-body: "LXGW WenKai", "smiley-sans", "YouYuan", "幼圆", "KaiTi", "STKaiti", "Kaiti SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --anime-w-1: 8px;
+  --anime-w-2: 16px;
+  --anime-w-3: 24px;
+  --anime-w-4: 32px;
+  --anime-w-5: 40px;
+}
