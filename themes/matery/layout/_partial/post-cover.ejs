@@ -27,14 +27,12 @@ if (page.img) {
 var defaultVideoBase = (theme.homeVideo && theme.homeVideo.dir) ? theme.homeVideo.dir : '/medias/vedio/';
 var defaultVideoExt = (theme.homeVideo && theme.homeVideo.ext) ? theme.homeVideo.ext : 'mp4';
 var defaultVideoCount = (theme.homeVideo && theme.homeVideo.count) ? theme.homeVideo.count : 4;
-var coverImg = (page.coverImg ? url_for(page.coverImg) : (page.img ? url_for(page.img) : featureimg));
 var coverVideo = page.coverVideo ? url_for(page.coverVideo) : (page.video ? url_for(page.video) : null);
 %>
 
-<div class="bg-cover pd-header post-cover has-video" style="background-image: url('<%- coverImg %>')">
+<div class="bg-cover pd-header post-cover has-video">
     <video class="bg-cover-video lazy-video" autoplay muted loop playsinline preload="none"
-           <% if (coverVideo) { %>data-src="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + coverVideo) %>"<% } else { %>data-random="1"<% } %>
-           poster="<%- coverImg %>"></video>
+           <% if (coverVideo) { %>data-src="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + coverVideo) %>"<% } else { %>data-random="1"<% } %>></video>
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">

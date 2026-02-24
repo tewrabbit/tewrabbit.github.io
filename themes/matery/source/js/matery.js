@@ -171,21 +171,32 @@ $(function () {
     $('.tooltipped').tooltip();
 
     const lazyVideos = Array.from(document.querySelectorAll('video.lazy-video'));
-    const vedioList = Array.isArray(window.__vedioList) ? window.__vedioList.slice() : [];
-    let vedioCursor = 0;
-    if (vedioList.length > 1) {
-        for (let i = vedioList.length - 1; i > 0; i--) {
+    const videoListSource = Array.isArray(window.__videoList) ? window.__videoList
+        : (Array.isArray(window.__vedioList) ? window.__vedioList : []);
+    if (!Array.isArray(window.__videoList) && Array.isArray(window.__vedioList)) {
+        window.__videoList = window.__vedioList;
+    }
+    if (!Array.isArray(window.__vedioList) && Array.isArray(window.__videoList)) {
+        window.__vedioList = window.__videoList;
+    }
+    const videoList = Array.isArray(videoListSource) ? videoListSource.slice() : [];
+    let videoCursor = 0;
+    if (videoList.length > 1) {
+        for (let i = videoList.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            const t = vedioList[i];
-            vedioList[i] = vedioList[j];
-            vedioList[j] = t;
+            const t = videoList[i];
+            videoList[i] = videoList[j];
+            videoList[j] = t;
         }
     }
-    function pickNextVedio() {
-        if (vedioList.length === 0) return null;
-        const v = vedioList[vedioCursor % vedioList.length];
-        vedioCursor++;
+    function pickNextVideo() {
+        if (videoList.length === 0) return null;
+        const v = videoList[videoCursor % videoList.length];
+        videoCursor++;
         return v;
+    }
+    function pickNextVedio() {
+        return pickNextVideo();
     }
     if (lazyVideos.length > 0 && 'IntersectionObserver' in window) {
         const maxConcurrent = 2;
@@ -212,7 +223,7 @@ $(function () {
             if (!(video instanceof HTMLVideoElement)) return;
             let src = video.getAttribute('data-src');
             if (!src && video.hasAttribute('data-random')) {
-                src = pickNextVedio();
+                src = pickNextVideo();
                 if (src) video.setAttribute('data-src', src);
             }
             if (!src) {
@@ -272,7 +283,7 @@ $(function () {
         lazyVideos.forEach((video) => {
             let src = video.getAttribute('data-src');
             if (!src && video.hasAttribute('data-random')) {
-                src = pickNextVedio();
+                src = pickNextVideo();
                 if (src) {
                     video.setAttribute('data-src', src);
                 }

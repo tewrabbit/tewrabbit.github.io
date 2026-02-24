@@ -116,7 +116,11 @@
 
     <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.jquery) %>"></script>
     <script>
-        window.__vedioList = <%- JSON.stringify(((typeof vedio_list === 'function' ? vedio_list() : ((site.data && site.data.vedio) ? site.data.vedio : []))).map(function (p) { return (theme.jsDelivr.url || '') + url_for(p); })) %>;
+        (function () {
+            const list = <%- JSON.stringify(((typeof video_list === 'function' ? video_list() : (typeof vedio_list === 'function' ? vedio_list() : ((site.data && (site.data.video || site.data.vedio)) ? (site.data.video || site.data.vedio) : [])))).map(function (p) { return (theme.jsDelivr.url || '') + url_for(p); })) %>;
+            window.__videoList = list;
+            if (!window.__vedioList) window.__vedioList = list;
+        })();
     </script>
 
 </head>

@@ -87,9 +87,9 @@ var coverPostsCount = coverPosts.length;
             %>
             <div class="carousel-item amber white-text carousel-post bg-cover has-video"
                  <% if (coverVideo) { %>data-video="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + url_for(coverVideo)) %>"<% } else { %>data-video-random="1"<% } %>
-                 style="background-image: url('<%- theme.jsDelivr.url %><%- url_for(coverImg) %>');">
+                 style="background-image: none;">
                 <video class="carousel-video" autoplay muted loop playsinline preload="metadata"
-                       poster="<%- theme.jsDelivr.url %><%- url_for(coverImg) %>"></video>
+                       ></video>
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
@@ -119,7 +119,7 @@ var coverPostsCount = coverPosts.length;
     $(function () {
         let coverSlider = $('.carousel');
 
-        const homeVideos = window.__vedioList || [];
+        const homeVideos = window.__videoList || window.__vedioList || [];
 
         function ensureVideoUrl(el) {
             if (!el || !el.getAttribute) return;

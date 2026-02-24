@@ -9,6 +9,7 @@
   - `/about/`：关于页
   - `/tags/`、`/categories/`、`/friends/`：主题功能页
   - `/_data/friends.json`：友链数据
+  - `/medias/video/`：封面/背景视频池（兼容旧目录 `/medias/vedio/`）
 - `/.github/workflows/deploy.yml`：GitHub Actions 自动部署到 `gh-pages`
 
 ## 环境要求
@@ -98,4 +99,3 @@ keywords:
 - Google Analytics / 百度统计：默认关闭（在主题配置中填入 ID 再开启）
 - 评论系统：默认关闭（建议使用 Waline 或 Twikoo 这类独立服务端方案）
   - 位置：`themes/matery/_config.yml` 的 `waline` / `twikoo`
-

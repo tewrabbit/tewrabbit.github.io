@@ -33,8 +33,7 @@ var featureImages = theme.featureImages;
                             var prevCoverVideo = page.prev.coverVideo ? page.prev.coverVideo : (page.prev.video ? page.prev.video : null);
                         %>
                         <video class="card-cover-video lazy-video" autoplay muted loop playsinline preload="none"
-                               <% if (prevCoverVideo) { %>data-src="<%- prevCoverVideo.startsWith('http') ? prevCoverVideo : (theme.jsDelivr.url + url_for(prevCoverVideo)) %>"<% } else { %>data-random="1"<% } %>
-                               poster="<%- theme.jsDelivr.url %><%- url_for(prevCoverImg) %>"></video>
+                               <% if (prevCoverVideo) { %>data-src="<%- prevCoverVideo.startsWith('http') ? prevCoverVideo : (theme.jsDelivr.url + url_for(prevCoverVideo)) %>"<% } else { %>data-random="1"<% } %>></video>
                         <span class="card-title"><%= page.prev.title %></span>
                     </div>
                 </a>
@@ -93,8 +92,7 @@ var featureImages = theme.featureImages;
                             var currCoverVideo = page.coverVideo ? page.coverVideo : (page.video ? page.video : null);
                         %>
                         <video class="card-cover-video lazy-video" autoplay muted loop playsinline preload="none"
-                               <% if (currCoverVideo) { %>data-src="<%- currCoverVideo.startsWith('http') ? currCoverVideo : (theme.jsDelivr.url + url_for(currCoverVideo)) %>"<% } else { %>data-random="1"<% } %>
-                               poster="<%- theme.jsDelivr.url %><%- url_for(currCoverImg) %>"></video>
+                               <% if (currCoverVideo) { %>data-src="<%- currCoverVideo.startsWith('http') ? currCoverVideo : (theme.jsDelivr.url + url_for(currCoverVideo)) %>"<% } else { %>data-random="1"<% } %>></video>
                         <span class="card-title"><%= page.title %></span>
                     </div>
                 </a>
@@ -155,8 +153,7 @@ var featureImages = theme.featureImages;
                             var nextCoverVideo = page.next.coverVideo ? page.next.coverVideo : (page.next.video ? page.next.video : null);
                         %>
                         <video class="card-cover-video lazy-video" autoplay muted loop playsinline preload="none"
-                               <% if (nextCoverVideo) { %>data-src="<%- nextCoverVideo.startsWith('http') ? nextCoverVideo : (theme.jsDelivr.url + url_for(nextCoverVideo)) %>"<% } else { %>data-random="1"<% } %>
-                               poster="<%- theme.jsDelivr.url %><%- url_for(nextCoverImg) %>"></video>
+                               <% if (nextCoverVideo) { %>data-src="<%- nextCoverVideo.startsWith('http') ? nextCoverVideo : (theme.jsDelivr.url + url_for(nextCoverVideo)) %>"<% } else { %>data-random="1"<% } %>></video>
                         <span class="card-title"><%= page.next.title %></span>
                     </div>
                 </a>
@@ -215,8 +212,7 @@ var featureImages = theme.featureImages;
                             var currCoverVideo2 = page.coverVideo ? page.coverVideo : (page.video ? page.video : null);
                         %>
                         <video class="card-cover-video lazy-video" autoplay muted loop playsinline preload="none"
-                               <% if (currCoverVideo2) { %>data-src="<%- currCoverVideo2.startsWith('http') ? currCoverVideo2 : (theme.jsDelivr.url + url_for(currCoverVideo2)) %>"<% } else { %>data-random="1"<% } %>
-                               poster="<%- theme.jsDelivr.url %><%- url_for(currCoverImg2) %>"></video>
+                               <% if (currCoverVideo2) { %>data-src="<%- currCoverVideo2.startsWith('http') ? currCoverVideo2 : (theme.jsDelivr.url + url_for(currCoverVideo2)) %>"<% } else { %>data-random="1"<% } %>></video>
                         <span class="card-title"><%= page.title %></span>
                     </div>
                 </a>

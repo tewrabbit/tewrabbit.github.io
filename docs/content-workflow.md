@@ -4,7 +4,7 @@
 
 - 文章：`source/_posts/*.md`
 - 友链数据：`source/_data/friends.json`
-- 视频池（封面/背景用）：`source/medias/vedio/`（直接丢视频即可）
+- 视频池（封面/背景用）：推荐 `source/medias/video/`（兼容旧目录 `source/medias/vedio/`）
 
 ## 新建文章
 
@@ -30,7 +30,7 @@ summary: 一句话摘要（会用于首页卡片与 SEO description）
 cover: true
 
 # 指定这篇文章的封面视频（指定后永远固定，不走随机）
-# coverVideo: /medias/vedio/3.mp4
+# coverVideo: /medias/video/3.mp4
 
 # 可选：指定这篇文章的封面图片（视频没加载出来时的兜底图）
 # coverImg: /medias/featureimages/0.jpg
@@ -64,4 +64,3 @@ cover: true
 ```
 
 生成后访问：`/friends/`
-

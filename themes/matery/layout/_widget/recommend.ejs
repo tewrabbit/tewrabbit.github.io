@@ -55,10 +55,9 @@
         var bgColor = bgColorArr[i % colorCount];
     %>
     <div class="col s12 m6" <% if (i > 1) { %>data-aos="zoom-in-up"<% } %>>
-            <div class="post-card has-video" style="background-image: url('<%- theme.jsDelivr.url %><%- url_for(coverImg) %>')">
+            <div class="post-card has-video">
             <video class="post-card-video lazy-video" autoplay muted loop playsinline preload="none"
-                   <% if (coverVideo) { %>data-src="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + url_for(coverVideo)) %>"<% } else { %>data-random="1"<% } %>
-                   poster="<%- theme.jsDelivr.url %><%- url_for(coverImg) %>"></video>
+                   <% if (coverVideo) { %>data-src="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + url_for(coverVideo)) %>"<% } else { %>data-random="1"<% } %>></video>
             <div class="post-body">
                 <div class="post-categories">
                     <% if (theme.recommend.useConfig) { %>
@@ -102,10 +101,9 @@
         var bgColor = bgColorArr[i % colorCount];
     %>
     <div class="col <%- grid %>" <% if (i > 0) { %>data-aos="zoom-in-up"<% } %>>
-            <div class="post-card has-video" style="background-image: url('<%- theme.jsDelivr.url %><%- url_for(coverImg) %>')">
+            <div class="post-card has-video">
             <video class="post-card-video lazy-video" autoplay muted loop playsinline preload="none"
-                   <% if (coverVideo) { %>data-src="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + url_for(coverVideo)) %>"<% } else { %>data-random="1"<% } %>
-                   poster="<%- theme.jsDelivr.url %><%- url_for(coverImg) %>"></video>
+                   <% if (coverVideo) { %>data-src="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + url_for(coverVideo)) %>"<% } else { %>data-random="1"<% } %>></video>
             <div class="post-body">
                 <div class="post-categories">
                     <% if (theme.recommend.useConfig) { %>

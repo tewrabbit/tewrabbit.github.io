@@ -57,6 +57,15 @@ nav {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  background: var(--anime-bg);
+}
+
+.bg-cover.has-video,
+.post-card.has-video,
+.carousel-item.has-video,
+.card-image {
+  background-image: none !important;
+  background-color: var(--anime-bg);
 }
 
 .brand-logo a {
@@ -227,6 +236,7 @@ small, .grey-text, .post-meta, .post-date, .post-info, .article-tag {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  background: var(--anime-bg);
 }
 
 .carousel-item.has-video .container {
@@ -243,6 +253,7 @@ small, .grey-text, .post-meta, .post-date, .post-info, .article-tag {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  background: var(--anime-bg);
 }
 
 .post-card.has-video {
@@ -256,6 +267,7 @@ small, .grey-text, .post-meta, .post-date, .post-info, .article-tag {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background: var(--anime-bg);
 }
 
 .post-card.has-video .post-body {

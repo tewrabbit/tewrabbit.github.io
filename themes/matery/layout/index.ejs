@@ -73,8 +73,7 @@
                                 var coverVideo = post.coverVideo ? post.coverVideo : (post.video ? post.video : null);
                             %>
                             <video class="card-cover-video lazy-video" autoplay muted loop playsinline preload="none"
-                                    <% if (coverVideo) { %>data-src="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + url_for(coverVideo)) %>"<% } else { %>data-random="1"<% } %>
-                                   poster="<%- theme.jsDelivr.url %><%- url_for(coverImg) %>"></video>
+                                    <% if (coverVideo) { %>data-src="<%- coverVideo.startsWith('http') ? coverVideo : (theme.jsDelivr.url + url_for(coverVideo)) %>"<% } else { %>data-random="1"<% } %>></video>
                             <span class="card-title"><%= post.title %></span>
                         </div>
                     </a>
