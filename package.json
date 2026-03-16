@@ -32,6 +32,6 @@
   },
   "devDependencies": {
     "moov-faststart": "^1.0.4",
-    "pdfkit": "^0.17.2"
+    "pdfkit": "^0.18.0"
   }
 }
